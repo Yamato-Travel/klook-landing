@@ -97,6 +97,23 @@
             box-shadow: 0 8px 35px rgba(37, 211, 102, 0.7);
         }
 
+        .klook-banner-sidebar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        @media (max-width: 1400px) {
+            .klook-banner-sidebar {
+                display: none;
+            }
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, rgba(255, 107, 107, 0.95) 0%, rgba(255, 142, 83, 0.95) 100%),
@@ -1084,6 +1101,36 @@
         </div>
     </div>
 
+    <!-- Klook Banners Section -->
+    <section style="background: #fff; padding: 60px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🎯 פעילויות מומלצות עם תמונות אמיתיות</h2>
+                <p class="section-subtitle">לחצו על הבאנרים להזמנה מיידית ב-Klook!</p>
+            </div>
+            
+            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px;">
+                <ins class="klk-aff-widget" data-wid="108786" data-adid="1196114" data-actids="25300,695,70672" data-prod="mul_act" data-price="false" data-lang="he" data-width="160" data-height="600" data-currency="ILS">
+                    <a href="//www.klook.com/?aid=108786">Klook.com</a>
+                </ins>
+                
+                <ins class="klk-aff-widget" data-wid="108786" data-adid="1196114" data-actids="25300,695,70672" data-prod="mul_act" data-price="false" data-lang="he" data-width="160" data-height="600" data-currency="ILS">
+                    <a href="//www.klook.com/?aid=108786">Klook.com</a>
+                </ins>
+                
+                <ins class="klk-aff-widget" data-wid="108786" data-adid="1196114" data-actids="25300,695,70672" data-prod="mul_act" data-price="false" data-lang="he" data-width="160" data-height="600" data-currency="ILS">
+                    <a href="//www.klook.com/?aid=108786">Klook.com</a>
+                </ins>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px; padding: 25px; background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%); border-radius: 15px; border-right: 4px solid #ff6b6b;">
+                <p style="margin: 0; color: #666; font-size: 16px;">
+                    💡 <strong>זכרו:</strong> הזינו את קוד ההנחה <strong style="color: #ff6b6b; font-size: 20px;">YAMATOTRAVEL</strong> בעמוד התשלום לקבלת ההנחה!
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Klook Search Box Section -->
     <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 80px 0;">
         <div class="container">
@@ -1181,6 +1228,13 @@
             </div>
         </div>
     </footer>
+
+    <!-- Klook Sidebar Banner (Fixed) -->
+    <div class="klook-banner-sidebar">
+        <ins class="klk-aff-widget" data-wid="108786" data-adid="1196114" data-actids="25300,695,70672" data-prod="mul_act" data-price="false" data-lang="he" data-width="160" data-height="600" data-currency="ILS">
+            <a href="//www.klook.com/?aid=108786">Klook.com</a>
+        </ins>
+    </div>
 
     <!-- WhatsApp Floating Button -->
     <a href="https://api.whatsapp.com/send/?phone=819073781376&text=היי, אני מעוניין/ת בפרטים על טיול ליפן 🇯🇵&type=phone_number&app_absent=0" target="_blank" class="whatsapp-float" title="צרו קשר בוואטסאפ">
