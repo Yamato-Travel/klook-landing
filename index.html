@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יפן למטיילים | Yamato Travel × Klook</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Heebo', Arial, sans-serif;
+            direction: rtl;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header h1 {
+            font-size: clamp(1.1rem, 4vw, 1.8rem);
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            line-height: 1.3;
+            padding: 0 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 15px;
+            width: 100%;
+        }
+
+        .hero {
+            background: white;
+            border-radius: 15px;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .hero h2 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            color: #1e3c72;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .coupon-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
+            border: 3px dashed #fff;
+        }
+
+        .coupon-box h3 {
+            font-size: clamp(1.3rem, 4vw, 2rem);
+            margin-bottom: 15px;
+        }
+
+        .coupon-code {
+            background: white;
+            color: #f5576c;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin: 15px 0;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            word-break: break-all;
+            cursor: pointer;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .coupon-code:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .coupon-code:active {
+            transform: scale(0.98);
+        }
+
+        .discount-text {
+            font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        .copy-hint {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        .copy-notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            z-index: 10000;
+            animation: fadeInOut 2s ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        }
+
+        .section-header {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0 20px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: #1e3c72;
+            margin: 0;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .activity-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .activity-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.95);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .activity-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .activity-content h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        .activity-content p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+            line-height: 1.5;
+        }
+
+        .activity-features {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .activity-features li {
+            padding: 5px 0;
+            color: #555;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        .price {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            font-weight: bold;
+            color: #f5576c;
+            margin: 15px 0;
+        }
+
+        .book-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: all 0.3s;
+            margin-top: auto;
+        }
+
+        .book-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .search-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px 20px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .search-section h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+
+        .search-section h3 {
+            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            color: #555;
+            margin: 20px 0 15px;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            font-family: 'Heebo', Arial, sans-serif;
+            transition: all 0.3s;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #f5576c;
+            box-shadow: 0 0 0 3px rgba(245, 87, 108, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: #999;
+        }
+
+        .search-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Heebo', Arial, sans-serif;
+            width: 100%;
+        }
+
+        .search-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .klook-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            margin-top: 15px;
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+            transition: color 0.3s;
+        }
+
+        .klook-link:hover {
+            color: #f5576c;
+            text-decoration: underline;
+        }
+
+        .tip-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            text-align: right;
+        }
+
+        .tip-box strong {
+            color: #856404;
+        }
+
+        .services-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px 20px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .services-section h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: #1e3c72;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .services-section h3 {
+            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            color: #555;
+            margin: 25px 0 15px;
+        }
+
+        .services-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .services-list li {
+            padding: 8px 0;
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+            color: #555;
+            border-bottom: 1px solid #eee;
+        }
+
+        .services-list li:last-child {
+            border-bottom: none;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 50px;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            margin-bottom: 15px;
+            color: #fff;
+            word-wrap: break-word;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+            display: block;
+            margin: 8px 0;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .footer-section a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin-top: 30px;
+        }
+
+        .footer-bottom p {
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            margin: 10px 0;
+            word-wrap: break-word;
+        }
+
+        .final-reminder {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px 10px;
+            }
+            
+            .header {
+                padding: 12px 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.2rem;
+                line-height: 1.4;
+                padding: 0 5px;
+            }
+            
+            .hero {
+                padding: 25px 15px;
+                margin-bottom: 20px;
+            }
+            
+            .coupon-box {
+                padding: 20px 15px;
+                margin: 20px 0;
+            }
+            
+            .coupon-code {
+                padding: 12px 20px;
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+            }
+            
+            .activities-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .activity-card {
+                margin: 0 auto;
+                max-width: 100%;
+            }
+
+            .search-container {
+                padding: 0 10px;
+            }
+
+            .search-box {
+                gap: 10px;
+            }
+
+            .search-input {
+                padding: 12px 15px;
+            }
+
+            .search-button {
+                padding: 12px 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .footer-section {
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                font-size: 28px;
+                bottom: 15px;
+                left: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.1rem;
+                padding: 0 10px;
+            }
+            
+            .hero {
+                padding: 20px 12px;
+            }
+            
+            .coupon-code {
+                font-size: 1.3rem;
+                padding: 10px 15px;
+                word-break: break-all;
+            }
+            
+            .activity-content {
+                padding: 15px;
+            }
+
+            .search-input {
+                padding: 10px 12px;
+                font-size: 1rem;
+            }
+
+            .search-button {
+                padding: 10px 15px;
+                font-size: 1rem;
+            }
+            
+            .footer {
+                padding: 30px 15px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🗾 Yamato Travel × Klook</h1>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <h2>🇯🇵 יפן למטיילים - הנחות בלעדיות 🇯🇵</h2>
+            <p>הזמינו אטרקציות ביפן במחירים הכי טובים!</p>
+            <p><strong>KLOOK</strong> הוא אתר ואפליקציה בינלאומיים להזמנת אטרקציות ביפן. הזמינו מראש כרטיסים למוזיאונים, פארקים, רכבות ועוד במחירים משתלמים!</p>
+        </div>
+
+        <div class="coupon-box">
+            <h3>💎 קוד הקופון הבלעדי 💎</h3>
+            <div class="coupon-code" onclick="copyCoupon()" title="לחצו להעתקה">YAMATOTRAVEL</div>
+            <p class="discount-text">⭐ הנחה של 5%-10% על כל הזמנה! ⭐</p>
+            <p class="copy-hint">👆 לחצו על הקוד להעתקה</p>
+        </div>
+
+        <div class="section-header">
+            <h2>🗼 האטרקציות בטוקיו</h2>
+        </div>
+
+        <div class="activities-grid">
+            <div class="activity-card">
+                <img src="AIRPORT TRANSFER.webp" alt="Airport Transfer" class="activity-image">
+                <div class="badge">✈️ מומלץ!</div>
+                <div class="activity-content">
+                    <h3>הסעות משדה התעופה</h3>
+                    <p>שירות הסעות נוח משדות התעופה למלון שלכם בטוקיו.</p>
+                    <ul class="activity-features">
+                        <li>🚗 רכב פרטי</li>
+                        <li>🚌 משותף</li>
+                    </ul>
+                    <div class="price">החל מ-¥3,500</div>
+                    <a href="https://www.klook.com/en-US/airport-transfers/?aid=108786" class="book-button" target="_blank">הזמן ←</a>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="TEAMLAB_PLANETS.webp" alt="teamLab Planets" class="activity-image">
+                <div class="badge">🔥 פופולרי</div>
+                <div class="activity-content">
+                    <h3>teamLab Planets TOKYO</h3>
+                    <p>חוויה אומנותית אינטראקטיבית מדהימה.</p>
+                    <ul class="activity-features">
+                        <li>⚡ אישור מיידי</li>
+                        <li>📱 כרטיס דיגיטלי</li>
+                    </ul>
+                    <div class="price">החל מ-¥3,200</div>
+                    <a href="https://www.klook.com/en-US/activity/25300-teamlab-planets-toyosu-tokyo-ticket/?aid=108786" class="book-button" target="_blank">הזמן ←</a>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="TOKYO SKYTREE.webp" alt="Tokyo Skytree" class="activity-image">
+                <div class="badge">📸 נוף</div>
+                <div class="activity-content">
+                    <h3>Tokyo Skytree</h3>
+                    <p>נקודת התצפית הגבוהה בטוקיו - נוף פנורמי!</p>
+                    <ul class="activity-features">
+                        <li>🌅 נוף מדהים</li>
+                        <li>📸 צילום</li>
+                    </ul>
+                    <div class="price">החל מ-¥2,700</div>
+                    <a href="https://www.klook.com/en-US/activity/41352-tokyo-skytree/?aid=108786" class="book-button" target="_blank">הזמן ←</a>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="TOKYO DISNEY LAND.webp" alt="Tokyo Disneyland" class="activity-image">
+                <div class="badge">🏰 למשפחות</div>
+                <div class="activity-content">
+                    <h3>Tokyo Disneyland</h3>
+                    <p>פארק השעשועים הקסום של דיסני!</p>
+                    <ul class="activity-features">
+                        <li>🎢 אטרקציות</li>
+                        <li>🎭 מופעים</li>
+                    </ul>
+                    <div class="price">החל מ-¥8,200</div>
+                    <a href="https://www.klook.com/en-US/activity/695-tokyo-disney-resort-1-day-pass-tokyo/?aid=108786" class="book-button" target="_blank">הזמן ←</a>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="FUJI DAY TOUR.webp" alt="Mt. Fuji Tour" class="activity-image">
+                <div class="badge">🗻 מומלץ</div>
+                <div class="activity-content">
+                    <h3>טיול להר פוג'י</h3>
+                    <p>סיור מודרך להר פוג'י ואגם קוואגוצ'יקו!</p>
+                    <ul class="activity-features">
+                        <li>🚌 הסעה</li>
+                        <li>🗣️ מדריך</li>
+                    </ul>
+                    <div class="price">החל מ-¥11,500</div>
+                    <a href="https://www.klook.com/en-US/activity/93901-mtfuji-one-day-tour-tokyo/?aid=108786" class="book-button" target="_blank">הזמן ←</a>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="SHIBUYA SKY.webp" alt="Shibuya Sky" class="activity-image">
+                <div class="badge">🌆 אינסטגרמי</div>
+                <div class="activity-content">
+                    <h3>Shibuya Sky</h3>
+                    <p>נקודת התצפית המודרנית - גג פתוח ב-230 מטרים!</p>
+                    <ul class="activity-features">
+                        <li>🌃 נוף 360°</li>
+                        <li>📸 תמונות</li>
+                    </ul>
+                    <div class="price">החל מ-¥2,500</div>
+                    <a href="https://www.klook.com/en-US/activity/70672-shibuya-sky-tokyo/?aid=108786" class="book-button" target="_blank">הזמן ←</a>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="JR PASS.webp" alt="JR Pass" class="activity-image">
+                <div class="badge">🚄 חיסכון</div>
+                <div class="activity-content">
+                    <h3>JR Pass</h3>
+                    <p>כרטיס רכבת ללא הגבלה ביפן כולל שינקנסן!</p>
+                    <ul class="activity-features">
+                        <li>🚄 שינקנסן</li>
+                        <li>♾️ ללא הגבלה</li>
+                    </ul>
+                    <div class="price">החל מ-¥29,650</div>
+                    <a href="https://www.klook.com/en-US/activity/49927-jr-east-tokyo-tokyowidepass/?aid=108786" class="book-button" target="_blank">הזמן ←</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2>🎡 האטרקציות באוסקה</h2>
+        </div>
+
+        <div class="activities-grid">
+            <div class="activity-card">
+                <img src="Universal-Studios-Japan STUDIO PASS.webp" alt="Universal Studios Japan" class="activity-image">
+                <div class="badge">🎮 Nintendo!</div>
+                <div class="activity-content">
+                    <h3>Universal Studios Japan</h3>
+                    <p>פארק עם Super Nintendo World, Harry Potter ועוד!</p>
+                    <ul class="activity-features">
+                        <li>🎮 Nintendo</li>
+                        <li>⚡ Harry Potter</li>
+                    </ul>
+                    <div class="price">החל מ-¥8,400</div>
+                    <a href="https://www.klook.com/en-US/activity/46604-universal-studios-japan-e-ticket-osaka-qr-code-direct-entry/?aid=108786" class="book-button" target="_blank">הזמן ←</a>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="OSAKA CASTLE.webp" alt="Osaka Castle" class="activity-image">
+                <div class="badge">🏯 היסטורי</div>
+                <div class="activity-content">
+                    <h3>טירת אוסקה</h3>
+                    <p>הטירה ההיסטורית עם מוזיאון ונוף פנורמי!</p>
+                    <ul class="activity-features">
+                        <li>🏯 היסטוריה</li>
+                        <li>🌸 גנים</li>
+                    </ul>
+                    <div class="price">החל מ-¥600</div>
+                    <a href="https://www.klook.com/en-US/activity/30110-osaka-castle-ticket/?aid=108786" class="book-button" target="_blank">הזמן ←</a>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="DOTONBORI FOOD TOUR.webp" alt="Dotonbori Food Tour" class="activity-image">
+                <div class="badge">🍜 קולינריה</div>
+                <div class="activity-content">
+                    <h3>סיור אוכל דוטונבורי</h3>
+                    <p>טעמו טקויאקי, אוקונומיאקי ועוד!</p>
+                    <ul class="activity-features">
+                        <li>🍜 אוכל רחוב</li>
+                        <li>🗣️ מדריך</li>
+                    </ul>
+                    <div class="price">החל מ-¥7,800</div>
+                    <a href="https://www.klook.com/en-US/activity/94409-shinsekai-dotonbori-join-half-day-food-tour/?aid=108786" class="book-button" target="_blank">הזמן ←</a>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="OSAKA CASTLE.webp" alt="Kyoto Tour" class="activity-image">
+                <div class="badge">⛩️ קיוטו</div>
+                <div class="activity-content">
+                    <h3>טיול לקיוטו</h3>
+                    <p>סיור למקדשים היפים - Fushimi Inari ועוד!</p>
+                    <ul class="activity-features">
+                        <li>⛩️ מקדשים</li>
+                        <li>🚌 הסעה</li>
+                    </ul>
+                    <div class="price">החל מ-¥9,800</div>
+                    <a href="https://www.klook.com/en-US/activity/87236-kyoto-tour-nara/?aid=108786" class="book-button" target="_blank">הזמן ←</a>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="OSAKA CASTLE.webp" alt="Nara Tour" class="activity-image">
+                <div class="badge">🦌 חמוד</div>
+                <div class="activity-content">
+                    <h3>טיול לנארה</h3>
+                    <p>פארק האיילים, מקדש Todai-ji ובודהה הענקי!</p>
+                    <ul class="activity-features">
+                        <li>🦌 איילים</li>
+                        <li>🏯 מקדשים</li>
+                    </ul>
+                    <div class="price">החל מ-¥6,500</div>
+                    <a href="https://www.klook.com/en-US/activity/140553-nara-uji-small-group-day-tour-from-osaka-or-kyoto/?aid=108786" class="book-button" target="_blank">הזמן ←</a>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="OSAKA AMAZING PASS.webp" alt="Osaka Amazing Pass" class="activity-image">
+                <div class="badge">🎟️ כדאי</div>
+                <div class="activity-content">
+                    <h3>Osaka Amazing Pass</h3>
+                    <p>כרטיס ל-40+ אטרקציות + תחבורה ללא הגבלה!</p>
+                    <ul class="activity-features">
+                        <li>🎢 40+ אטרקציות</li>
+                        <li>🚇 תחבורה</li>
+                    </ul>
+                    <div class="price">החל מ-¥2,800</div>
+                    <a href="https://www.klook.com/en-US/activity/82312-amazing-pass-osaka/?aid=108786" class="book-button" target="_blank">הזמן ←</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-section">
+            <h2>🔍 חפשו עוד אטרקציות ביפן</h2>
+            <p>אלפי פעילויות, סיורים ואטרקציות מחכים לכם!</p>
+            
+            <h3>💎 חיפוש ישיר באתר Klook</h3>
+            <p>חפשו לפי עיר, אטרקציה או פעילות - וקבלו את ההנחה שלנו!</p>
+            
+            <div class="search-container">
+                <form id="klookSearchForm" class="search-box" onsubmit="searchKlook(event)">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="הקלידו כאן... (לדוגמה: טוקיו, דיסני, שינקנסן)"
+                        required
+                    />
+                    <button type="submit" class="search-button">🔍 חפשו ב-Klook</button>
+                </form>
+                <a href="https://www.klook.com/?aid=108786" class="klook-link" target="_blank">או לחצו כאן לעבור ישירות לאתר Klook →</a>
+            </div>
+            
+            <div class="tip-box">
+                💡 <strong>טיפ חשוב:</strong> אל תשכחו להזין את קוד ההנחה <strong>YAMATOTRAVEL</strong> בעמוד התשלום!
+            </div>
+        </div>
+
+        <div class="services-section">
+            <h2>🎯 השירותים הפופולריים</h2>
+            
+            <h3>✨ מה עוד אפשר להזמין?</h3>
+            <ul class="services-list">
+                <li>כרטיסי רכבת JR Pass</li>
+                <li>WiFi ניידים ו-SIM</li>
+                <li>כרטיסי Suica ו-Pasmo</li>
+                <li>סיורים מודרכים</li>
+                <li>סיורי אוכל ומטבח יפני</li>
+                <li>כרטיסים לסומו</li>
+                <li>השכרת רכב ואופניים</li>
+                <li>כרטיסי תחבורה יומיים</li>
+                <li>סיורים להר פוג'י</li>
+                <li>כניסה לאונסן (מעיינות חמים)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>📍 Yamato Travel</h3>
+                <p>חברת טיולים בוטיק מומחית ביפן 🇯🇵</p>
+                <a href="https://yamato-travel.com" target="_blank">🌐 yamato-travel.com</a>
+                <a href="mailto:info@yamato-travel.com">📧 info@yamato-travel.com</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>📞 צרו קשר</h3>
+                <a href="https://api.whatsapp.com/send/?phone=819073781376&text&type=phone_number&app_absent=0" target="_blank">💬 WhatsApp</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>🔗 קישורים שימושיים</h3>
+                <a href="https://www.klook.com/?aid=108786" target="_blank">אתר Klook</a>
+                <a href="https://www.klook.com/en-US/destination/c28-tokyo/1-things-to-do/?aid=108786" target="_blank">אטרקציות בטוקיו</a>
+                <a href="https://www.klook.com/en-US/destination/c29-osaka/1-things-to-do/?aid=108786" target="_blank">אטרקציות באוסקה</a>
+                <a href="https://www.klook.com/en-US/experiences/list/kyoto-day-trips/c30-cate10/?aid=108786" target="_blank">אטרקציות בקיוטו</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>🌟 עקבו אחרינו</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1HgT8ndLJs/" target="_blank">📘 Facebook</a>
+                    <a href="https://www.instagram.com/yamato_travel_japan/" target="_blank">📸 Instagram</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 Yamato Travel × Klook | כל הזכויות שמורות 🗾</p>
+            <div class="final-reminder">
+                <p>💡 זכרו להזין את קוד ההנחה <strong>YAMATOTRAVEL</strong> בכל הזמנה!</p>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://api.whatsapp.com/send/?phone=819073781376&text=היי, אני מעוניין/ת בפרטים על טיול ליפן 🇯🇵&type=phone_number&app_absent=0" class="whatsapp-float" target="_blank">💬</a>
+
+    <script>
+        function copyCoupon() {
+            const couponCode = 'YAMATOTRAVEL';
+            
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(couponCode).then(function() {
+                    showCopyNotification();
+                }).catch(function() {
+                    fallbackCopy(couponCode);
+                });
+            } else {
+                fallbackCopy(couponCode);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showCopyNotification();
+            } catch (err) {
+                alert('קוד הקופון: ' + text);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function showCopyNotification() {
+            const notification = document.createElement('div');
+            notification.className = 'copy-notification';
+            notification.textContent = '✅ הקוד הועתק!';
+            document.body.appendChild(notification);
+            
+            setTimeout(function() {
+                document.body.removeChild(notification);
+            }, 2000);
+        }
+
+        function searchKlook(event) {
+            event.preventDefault();
+            const searchTerm = document.getElementById('searchInput').value;
+            const affiliateId = '108786';
+            const searchUrl = 'https://www.klook.com/en-US/search/?query=' + encodeURIComponent(searchTerm) + '&aid=' + affiliateId;
+            window.open(searchUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
