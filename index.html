@@ -73,81 +73,43 @@
             line-height: 1.6;
         }
 
-        .coupon-box {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        .affiliate-box {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
             padding: 25px 20px;
             border-radius: 15px;
             margin: 30px 0;
             text-align: center;
-            box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
-            border: 3px dashed #fff;
+            box-shadow: 0 8px 20px rgba(30, 60, 114, 0.4);
         }
 
-        .coupon-box h3 {
+        .affiliate-box h3 {
             font-size: clamp(1.3rem, 4vw, 2rem);
             margin-bottom: 15px;
         }
 
-        .coupon-code {
-            background: white;
-            color: #f5576c;
-            padding: 15px 25px;
-            border-radius: 10px;
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            font-weight: bold;
-            letter-spacing: 3px;
-            margin: 15px 0;
-            display: inline-block;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            word-break: break-all;
-            cursor: pointer;
-            transition: all 0.3s;
-            user-select: none;
-        }
-
-        .coupon-code:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-        }
-
-        .coupon-code:active {
-            transform: scale(0.98);
-        }
-
-        .discount-text {
-            font-size: clamp(1.1rem, 3.5vw, 1.5rem);
-            margin-top: 15px;
-            font-weight: 600;
-        }
-
-        .copy-hint {
-            font-size: 0.9rem;
-            margin-top: 10px;
+        .affiliate-box p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 20px;
             opacity: 0.9;
         }
 
-        .copy-notification {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.85);
-            color: white;
-            padding: 20px 40px;
-            border-radius: 10px;
-            font-size: 1.2rem;
+        .affiliate-button {
+            background: white;
+            color: #1e3c72;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
             font-weight: bold;
-            z-index: 10000;
-            animation: fadeInOut 2s ease-in-out;
-            pointer-events: none;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        @keyframes fadeInOut {
-            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-            20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        .affiliate-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
 
         .section-header {
@@ -353,19 +315,6 @@
             text-decoration: underline;
         }
 
-        .tip-box {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
-            border-radius: 10px;
-            padding: 15px 20px;
-            margin: 20px 0;
-            text-align: right;
-        }
-
-        .tip-box strong {
-            color: #856404;
-        }
-
         .services-section {
             background: white;
             border-radius: 15px;
@@ -468,13 +417,6 @@
             word-wrap: break-word;
         }
 
-        .final-reminder {
-            background: rgba(255,255,255,0.1);
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
@@ -500,117 +442,30 @@
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 15px 10px;
-            }
-            
-            .header {
-                padding: 12px 15px;
-            }
-            
-            .header h1 {
-                font-size: 1.2rem;
-                line-height: 1.4;
-                padding: 0 5px;
-            }
-            
-            .hero {
-                padding: 25px 15px;
-                margin-bottom: 20px;
-            }
-            
-            .coupon-box {
-                padding: 20px 15px;
-                margin: 20px 0;
-            }
-            
-            .coupon-code {
-                padding: 12px 20px;
-                font-size: 1.5rem;
-                letter-spacing: 2px;
-            }
-            
-            .activities-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .activity-card {
-                margin: 0 auto;
-                max-width: 100%;
-            }
-
-            .search-container {
-                padding: 0 10px;
-            }
-
-            .search-box {
-                gap: 10px;
-            }
-
-            .search-input {
-                padding: 12px 15px;
-            }
-
-            .search-button {
-                padding: 12px 20px;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            .footer-section {
-                text-align: center;
-            }
-            
-            .social-links {
-                justify-content: center;
-            }
-            
-            .whatsapp-float {
-                width: 55px;
-                height: 55px;
-                font-size: 28px;
-                bottom: 15px;
-                left: 15px;
-            }
+            .container { padding: 15px 10px; }
+            .header { padding: 12px 15px; }
+            .header h1 { font-size: 1.2rem; line-height: 1.4; padding: 0 5px; }
+            .hero { padding: 25px 15px; margin-bottom: 20px; }
+            .affiliate-box { padding: 20px 15px; margin: 20px 0; }
+            .activities-grid { grid-template-columns: 1fr; gap: 15px; }
+            .activity-card { margin: 0 auto; max-width: 100%; }
+            .search-container { padding: 0 10px; }
+            .search-box { gap: 10px; }
+            .search-input { padding: 12px 15px; }
+            .search-button { padding: 12px 20px; }
+            .footer-content { grid-template-columns: 1fr; gap: 25px; }
+            .footer-section { text-align: center; }
+            .social-links { justify-content: center; }
+            .whatsapp-float { width: 55px; height: 55px; font-size: 28px; bottom: 15px; left: 15px; }
         }
 
         @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1.1rem;
-                padding: 0 10px;
-            }
-            
-            .hero {
-                padding: 20px 12px;
-            }
-            
-            .coupon-code {
-                font-size: 1.3rem;
-                padding: 10px 15px;
-                word-break: break-all;
-            }
-            
-            .activity-content {
-                padding: 15px;
-            }
-
-            .search-input {
-                padding: 10px 12px;
-                font-size: 1rem;
-            }
-
-            .search-button {
-                padding: 10px 15px;
-                font-size: 1rem;
-            }
-            
-            .footer {
-                padding: 30px 15px 15px;
-            }
+            .header h1 { font-size: 1.1rem; padding: 0 10px; }
+            .hero { padding: 20px 12px; }
+            .activity-content { padding: 15px; }
+            .search-input { padding: 10px 12px; font-size: 1rem; }
+            .search-button { padding: 10px 15px; font-size: 1rem; }
+            .footer { padding: 30px 15px 15px; }
         }
     </style>
 </head>
@@ -621,16 +476,15 @@
 
     <div class="container">
         <div class="hero">
-            <h2>🇯🇵 יפן למטיילים - הנחות בלעדיות 🇯🇵</h2>
+            <h2>🇯🇵 יפן למטיילים 🇯🇵</h2>
             <p>הזמינו אטרקציות ביפן במחירים הכי טובים!</p>
             <p><strong>KLOOK</strong> הוא אתר ואפליקציה בינלאומיים להזמנת אטרקציות ביפן. הזמינו מראש כרטיסים למוזיאונים, פארקים, רכבות ועוד במחירים משתלמים!</p>
         </div>
 
-        <div class="coupon-box">
-            <h3>💎 קוד הקופון הבלעדי 💎</h3>
-            <div class="coupon-code" onclick="copyCoupon()" title="לחצו להעתקה">YAMATOTRAVEL</div>
-            <p class="discount-text">⭐ הנחה של 5%-10% על כל הזמנה! ⭐</p>
-            <p class="copy-hint">👆 לחצו על הקוד להעתקה</p>
+        <div class="affiliate-box">
+            <h3>🎌 לקוחות ימאטו טרוול</h3>
+            <p>לחצו על הכפתור לקבלת מחירים מיוחדים על אטרקציות ביפן!</p>
+            <a href="https://affiliate.klook.com/redirect?aid=108786&aff_adid=1229251&k_site=https%3A%2F%2Fwww.klook.com%2F" class="affiliate-button" target="_blank">🛒 הזמינו ב-Klook ←</a>
         </div>
 
         <div class="section-header">
@@ -845,7 +699,7 @@
             <p>אלפי פעילויות, סיורים ואטרקציות מחכים לכם!</p>
             
             <h3>💎 חיפוש ישיר באתר Klook</h3>
-            <p>חפשו לפי עיר, אטרקציה או פעילות - וקבלו את ההנחה שלנו!</p>
+            <p>חפשו לפי עיר, אטרקציה או פעילות</p>
             
             <div class="search-container">
                 <form id="klookSearchForm" class="search-box" onsubmit="searchKlook(event)">
@@ -858,11 +712,7 @@
                     />
                     <button type="submit" class="search-button">🔍 חפשו ב-Klook</button>
                 </form>
-                <a href="https://www.klook.com/?aid=108786" class="klook-link" target="_blank">או לחצו כאן לעבור ישירות לאתר Klook →</a>
-            </div>
-            
-            <div class="tip-box">
-                💡 <strong>טיפ חשוב:</strong> אל תשכחו להזין את קוד ההנחה <strong>YAMATOTRAVEL</strong> בעמוד התשלום!
+                <a href="https://affiliate.klook.com/redirect?aid=108786&aff_adid=1229251&k_site=https%3A%2F%2Fwww.klook.com%2F" class="klook-link" target="_blank">או לחצו כאן לעבור ישירות לאתר Klook →</a>
             </div>
         </div>
 
@@ -901,7 +751,7 @@
             
             <div class="footer-section">
                 <h3>🔗 קישורים שימושיים</h3>
-                <a href="https://www.klook.com/?aid=108786" target="_blank">אתר Klook</a>
+                <a href="https://affiliate.klook.com/redirect?aid=108786&aff_adid=1229251&k_site=https%3A%2F%2Fwww.klook.com%2F" target="_blank">אתר Klook</a>
                 <a href="https://www.klook.com/en-US/destination/c28-tokyo/1-things-to-do/?aid=108786" target="_blank">אטרקציות בטוקיו</a>
                 <a href="https://www.klook.com/en-US/destination/c29-osaka/1-things-to-do/?aid=108786" target="_blank">אטרקציות באוסקה</a>
                 <a href="https://www.klook.com/en-US/experiences/list/kyoto-day-trips/c30-cate10/?aid=108786" target="_blank">אטרקציות בקיוטו</a>
@@ -918,61 +768,16 @@
         
         <div class="footer-bottom">
             <p>© 2025 Yamato Travel × Klook | כל הזכויות שמורות 🗾</p>
-            <div class="final-reminder">
-                <p>💡 זכרו להזין את קוד ההנחה <strong>YAMATOTRAVEL</strong> בכל הזמנה!</p>
-            </div>
         </div>
     </div>
 
     <a href="https://api.whatsapp.com/send/?phone=819073781376&text=היי, אני מעוניין/ת בפרטים על טיול ליפן 🇯🇵&type=phone_number&app_absent=0" class="whatsapp-float" target="_blank">💬</a>
 
     <script>
-        function copyCoupon() {
-            const couponCode = 'YAMATOTRAVEL';
-            
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(couponCode).then(function() {
-                    showCopyNotification();
-                }).catch(function() {
-                    fallbackCopy(couponCode);
-                });
-            } else {
-                fallbackCopy(couponCode);
-            }
-        }
-
-        function fallbackCopy(text) {
-            const textArea = document.createElement('textarea');
-            textArea.value = text;
-            textArea.style.position = 'fixed';
-            textArea.style.left = '-999999px';
-            document.body.appendChild(textArea);
-            textArea.select();
-            try {
-                document.execCommand('copy');
-                showCopyNotification();
-            } catch (err) {
-                alert('קוד הקופון: ' + text);
-            }
-            document.body.removeChild(textArea);
-        }
-
-        function showCopyNotification() {
-            const notification = document.createElement('div');
-            notification.className = 'copy-notification';
-            notification.textContent = '✅ הקוד הועתק!';
-            document.body.appendChild(notification);
-            
-            setTimeout(function() {
-                document.body.removeChild(notification);
-            }, 2000);
-        }
-
         function searchKlook(event) {
             event.preventDefault();
             const searchTerm = document.getElementById('searchInput').value;
-            const affiliateId = '108786';
-            const searchUrl = 'https://www.klook.com/en-US/search/?query=' + encodeURIComponent(searchTerm) + '&aid=' + affiliateId;
+            const searchUrl = 'https://www.klook.com/en-US/search/?query=' + encodeURIComponent(searchTerm) + '&aid=108786';
             window.open(searchUrl, '_blank');
         }
     </script>
