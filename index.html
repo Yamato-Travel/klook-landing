@@ -740,8 +740,7 @@
                 <h3>📍 Yamato Travel</h3>
                 <p>חברת טיולים בוטיק מומחית ביפן 🇯🇵</p>
                 <a href="https://yamato-travel.com" target="_blank">🌐 yamato-travel.com</a>
-                <a href="#" id="emailLink">📧 info@yamato-travel.com</a>
-                <a href="/cdn-cgi/l/email-protection#d4bdbab2bb94adb5b9b5a0bbf9a0a6b5a2b1b8fab7bbb9">📧 <span class="__cf_email__" data-cfemail="a0c9cec6cfe0d9c1cdc1d4cf8dd4d2c1d6c5cc8ec3cfcd">[email&#160;protected]</span></a>
+                <span id="emailSpan" style="cursor:pointer;color:rgba(255,255,255,0.9);font-size:clamp(0.95rem, 2.5vw, 1.05rem);">📧 info@yamato-travel.com</span>
             </div>
             
             <div class="footer-section">
@@ -775,7 +774,12 @@
 
     <script>
         // Email link protection
-        document.getElementById('emailLink').href = 'mailto:' + 'info' + '@' + 'yamato-travel.com';
+
+        document.getElementById('emailSpan').addEventListener('click', function() {
+            window.location = 'mail' + 'to:info' + '@' + 'yamato-travel.com';
+        });
 
         function searchKlook() {
-            const searchTerm = document.getElementById('searchInput').value.trim(
+            const searchTerm = document.getElementById('searchInput').value.trim();
+            if (!searchTerm) return;
+      
