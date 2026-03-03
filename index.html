@@ -740,7 +740,7 @@
                 <h3>📍 Yamato Travel</h3>
                 <p>חברת טיולים בוטיק מומחית ביפן 🇯🇵</p>
                 <a href="https://yamato-travel.com" target="_blank">🌐 yamato-travel.com</a>
-                <span id="emailSpan" style="cursor:pointer;color:rgba(255,255,255,0.9);font-size:clamp(0.95rem, 2.5vw, 1.05rem);">📧 info@yamato-travel.com</span>
+                <span id="emailSpan" style="cursor:pointer;color:rgba(255,255,255,0.9);font-size:clamp(0.95rem, 2.5vw, 1.05rem);">📧 info&#64;yamato&#45;travel&#46;com</span>
             </div>
             
             <div class="footer-section">
@@ -773,13 +773,16 @@
     <a href="https://api.whatsapp.com/send/?phone=819073781376&text=היי, אני מעוניין/ת בפרטים על טיול ליפן 🇯🇵&type=phone_number&app_absent=0" class="whatsapp-float" target="_blank">💬</a>
 
     <script>
-        // Email link protection
-
         document.getElementById('emailSpan').addEventListener('click', function() {
-            window.location = 'mail' + 'to:info' + '@' + 'yamato-travel.com';
+            window.location = 'mail' + 'to:' + 'info' + '@' + 'yamato-travel.com';
         });
 
         function searchKlook() {
-            const searchTerm = document.getElementById('searchInput').value.trim();
+            var searchTerm = document.getElementById('searchInput').value.trim();
             if (!searchTerm) return;
-      
+            var url = 'https://www.klook.com/en-US/search/?query=' + encodeURIComponent(searchTerm) + '&aid=108786';
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
